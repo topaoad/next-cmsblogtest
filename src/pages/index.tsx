@@ -1,24 +1,37 @@
 import { Button, Stack, Table } from "@mantine/core";
-import type { CustomNextPage } from "next";
+import Link from "next/link";
+import type { CustomNextPage, GetStaticProps, NextPage } from "next";
 import { DashboardLayout } from "src/layout";
 import { PageContent } from "src/component/PageContent";
 import { PageContainer } from "src/component/PageContainer";
 import { showNotification } from "@mantine/notifications";
+import { client } from "../lib/next/client";
 
-const Index: CustomNextPage = () => {
+// const Home: NextPage = (props) => {
+//   console.log(props);
+//   return <div>hello</div>;
+// };
+// export const getStaticProps: GetStaticProps = async () => {
+//   const data = await client.get({ endpoint: "blogs" });
+//   // .then((res) => console.log(res));
+//   return { props: data };
+// };
+
+// ジェネリックな型引数むにゃむにゃはやっていない。
+const Index = ({ blog }) => {
+  console.log(blog);
   return (
-    <PageContainer title="ホーム" fluid>
-      <Stack spacing="xl">
-        <PageContent title="テーブル">
-          <SampleTable />
-        </PageContent>
-        <PageContent title="通知">
-          <Button onClick={() => showNotification({ message: "成功しました" })}>
-            通知を表示
-          </Button>
-        </PageContent>
-      </Stack>
-    </PageContainer>
+    <div>
+      <ul>
+        {blog.map((blog) => (
+          <li key={blog.id}>
+            <Link href={`/sampleblog/${blog.id}`}>
+              <a>{blog.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
@@ -51,6 +64,16 @@ const SampleTable = () => {
       </tbody>
     </Table>
   );
+};
+
+export const getStaticProps:GetStaticProps = async () => {
+  const data = await client.get({ endpoint: "sampleblog" });
+
+  return {
+    props: {
+      blog: data.contents,
+    },
+  };
 };
 
 Index.getLayout = DashboardLayout;
