@@ -6,6 +6,14 @@ import { PageContent } from "src/component/PageContent";
 import { PageContainer } from "src/component/PageContainer";
 import { showNotification } from "@mantine/notifications";
 import { client } from "../lib/next/client";
+import {
+  Key,
+  ReactElement,
+  JSXElementConstructor,
+  ReactFragment,
+  ReactPortal,
+} from "react";
+import { MicroCMSListResponse } from "microcms-js-sdk";
 
 // const Home: NextPage = (props) => {
 //   console.log(props);
@@ -17,19 +25,24 @@ import { client } from "../lib/next/client";
 //   return { props: data };
 // };
 
+// type Blog{
+//   title:string,
+// }
 // ジェネリックな型引数むにゃむにゃはやっていない。
-const Index = ({ blog }) => {
+const Index: any = ( {blog}: {blog: any} ): JSX.Element => {
   console.log(blog);
   return (
     <div>
       <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/sampleblog/${blog.id}`}>
-              <a>{blog.title}</a>
-            </Link>
-          </li>
-        ))}
+        {blog.map(
+          (blog: { id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }) => (
+            <li key={blog.id}>
+              <Link href={`/sampleblog/${blog.id}`}>
+                <a>{blog.title}</a>
+              </Link>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
@@ -66,7 +79,7 @@ const SampleTable = () => {
   );
 };
 
-export const getStaticProps:GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: "sampleblog" });
 
   return {

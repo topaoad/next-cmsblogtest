@@ -3,6 +3,18 @@ import React from "react";
 
 export default function BlogId({ blog }) {
   console.log(blog);
+  const EyeCatch = () => {
+    if (blog.eyecatch) {
+      return (
+        <img
+          src={blog.eyecatch.url}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
+      );
+    } else return;
+  };
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -13,8 +25,7 @@ export default function BlogId({ blog }) {
         }}
       />
       <div>
-        
-        <img  src={blog.eyecatch.url}           alt="Picture of the author"           width={500}           height={500}         />
+        <EyeCatch />
       </div>
     </main>
   );
