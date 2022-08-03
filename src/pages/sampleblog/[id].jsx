@@ -20,7 +20,7 @@ export default function BlogId({ blog }) {
   console.log(blog.publishedAt);
 
   return (
-    <main className="container ">
+    <main className="container p-4 ">
       <h1 className="mb-6 mx-auto">{blog.title}</h1>
       <div className="flex mb-4 mt-4">
         <p className="">公開日:</p>

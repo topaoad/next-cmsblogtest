@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: "jit",
+  darkMode: 'class',
   purge: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -12,7 +13,7 @@ module.exports = {
     container: {
       center: true,
     },
-    
+
     screens: {
     sm: "640px",
     // => @media (min-width: 640px) { ... }

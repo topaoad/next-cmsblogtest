@@ -3,3 +3,123 @@
 @tailwind utilities;
  */
 
+
+/* ダークモード対応 */
+ :root[data-theme=light] {
+  --cBackground: #fedfe1; /* 桜色 */
+  --cText: #fcfaf2; /* 鈍色 */
+}
+
+/* OSの設定がダークモード時のスタイル */
+:root[data-theme=dark]{
+  --cBackground: #64363c; /* 桑染 */
+  --cText: #fcfaf2; /* 白練 */
+}
+
+body {
+  /* // 値を変数で指定しておくとモードによって自動的に使われる変数が変わる */
+  color: white!important;
+  background-color: black!important;
+}
+
+.test {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: var(--cBackground);
+}
+.test__text {
+  color: var(--cText);
+  text-align: center;
+  line-height: 100px;
+}
+
+/* 切り替えスイッチ */
+.onoffswitch {
+  position: relative;
+  width: 90px;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "Dark";
+  padding-left: 10px;
+  background-color: #43341b;
+  color: #fbe251;
+}
+.onoffswitch-inner:after {
+  content: "Light";
+  padding-right: 10px;
+  background-color: #fbe251;
+  color: #91989f;
+  text-align: right;
+}
+.onoffswitch-switch {
+  display: block;
+  width: 18px;
+  margin: 6px;
+  background: #91989f;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+.toggle-checkbox {
+  @apply absolute block w-6 h-6 dark:bg-white border-4 dark:border-gray-400 rounded-full appearance-none cursor-pointer focus:outline-none bg-gray-800 border-gray-100;
+}
+
+.toggle-checkbox:checked {
+  @apply right-0 border-gray-400;
+}
+
+.toggle-label {
+  @apply block h-6 align-middle overflow-hidden text-gray-100 bg-gray-100 rounded-full cursor-pointer dark:text-gray-400 dark:bg-gray-400 dark:border-gray-400 border-gray-100 border-2;
+}
+
+/* Start purging... *
+@tailwind utilities;
+/* Stop purging. */
