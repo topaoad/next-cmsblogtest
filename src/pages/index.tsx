@@ -14,6 +14,7 @@ import {
   ReactPortal,
 } from "react";
 import { MicroCMSListResponse } from "microcms-js-sdk";
+import { ToggleDarkMode } from "src/component/ToggleDarkMode";
 
 // const Home: NextPage = (props) => {
 //   console.log(props);
@@ -29,20 +30,38 @@ import { MicroCMSListResponse } from "microcms-js-sdk";
 //   title:string,
 // }
 // ジェネリックな型引数むにゃむにゃはやっていない。
-const Index: any = ( {blog}: {blog: any} ): JSX.Element => {
+const Index: any = ({ blog }: { blog: any }): JSX.Element => {
   console.log(blog);
   return (
     <div className="flex-auto mx-auto shadow-md">
-      <div className="text-4xl text-center bg-purple-200 md:bg-red-200  py-2">記事一覧</div>
+      <div className="text-4xl text-center bg-purple-200 md:bg-red-200  py-2">
+        記事一覧
+      </div>
       <ul>
         {blog.map(
-          (blog: { id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }) => (
-            <li className="my-4 cursor-pointer text-center font-size: 1.25rem" key={blog.id}>
+          (blog: {
+            id: Key | null | undefined;
+            title:
+              | string
+              | number
+              | boolean
+              | ReactElement<any, string | JSXElementConstructor<any>>
+              | ReactFragment
+              | ReactPortal
+              | null
+              | undefined;
+          }) => (
+            <li
+              className="my-4 cursor-pointer text-center font-size: 1.25rem"
+              key={blog.id}
+            >
               <Link href={`/sampleblog/${blog.id}`}>
-                <a className="text-center font-size: 1.25rem leading-8">{blog.title}</a>
+                <a className="text-center font-size: 1.25rem leading-8">
+                  {blog.title}
+                </a>
               </Link>
             </li>
-          ) 
+          )
         )}
       </ul>
     </div>

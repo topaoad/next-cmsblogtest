@@ -1,7 +1,7 @@
 /* @tailwind base;
 @tailwind components;
-@tailwind utilities;
- */
+@tailwind utilities; */
+
 
 
 /* ダークモード対応 */
@@ -18,8 +18,8 @@
 
 body {
   /* // 値を変数で指定しておくとモードによって自動的に使われる変数が変わる */
-  color: white!important;
-  background-color: black!important;
+  color: var(--cText);
+  background-color: var(--cBackground);
 }
 
 .test {

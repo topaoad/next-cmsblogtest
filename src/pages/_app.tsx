@@ -2,7 +2,7 @@ import { NotificationsProvider } from "@mantine/notifications";
 import type { CustomAppPage } from "next/app";
 import { AppMantineProvider, GlobalStyleProvider } from "src/lib/mantine";
 import "../styles/globals.css";
-import "tailwindcss/tailwind.css";
+import { ThemeProvider } from "next-themes";
 
 const App: CustomAppPage = ({ Component, pageProps }) => {
   const getLayout =
@@ -12,13 +12,15 @@ const App: CustomAppPage = ({ Component, pageProps }) => {
     });
 
   return (
-    <GlobalStyleProvider>
-      <AppMantineProvider>
-        <NotificationsProvider>
-          {getLayout(<Component {...pageProps} />)}
-        </NotificationsProvider>
-      </AppMantineProvider>
-    </GlobalStyleProvider>
+    <ThemeProvider attribute="class"  defaultTheme="light">
+      <GlobalStyleProvider>
+        <AppMantineProvider>
+          <NotificationsProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </NotificationsProvider>
+        </AppMantineProvider>
+      </GlobalStyleProvider>
+    </ThemeProvider>
   );
 };
 

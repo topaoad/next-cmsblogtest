@@ -12,7 +12,7 @@ import {
   MediaQuery,
 } from "@mantine/core";
 import { Menu2 } from "tabler-icons-react";
-
+import { ToggleDarkMode } from "src/component/ToggleDarkMode";
 import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
 
 const Header = dynamic(async () => {
