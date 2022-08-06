@@ -11,12 +11,15 @@ import {
   Drawer,
   MediaQuery,
 } from "@mantine/core";
-// import { SideNav } from "src/layout/SideNav.tsx";
+import { DarkModeButton } from "src/component/DarkModeButton";
+import { Menu2 } from "tabler-icons-react";
+import dynamic from "next/dynamic";
+import { useDisclosure } from "@mantine/hooks";
 
-// const SideNav = dynamic(async () => {
-//   const { SideNav } = await import("src/layout/SideNav.tsx");
-//   return SideNav;
-// });
+const Header = dynamic(async () => {
+  const { Header } = await import("src/layout/DashboardLayout/Header");
+  return Header;
+});
 
 export default function BlogId({ blog }) {
   console.log(blog);
@@ -34,25 +37,41 @@ export default function BlogId({ blog }) {
     } else return;
   };
   console.log(blog.publishedAt);
+  const [opened, handlers] = useDisclosure(false);
 
   return (
-    <main className="container p-4 ">
+    <main className="blogpage-wrapper ">
+      <div className="container p-4 ">
+        <Header
+          left={
+            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+              <ActionIcon
+                variant="hover"
+                radius="xl"
+                size={40}
+                onClick={handlers.open}
+              >
+                <Menu2 />
+              </ActionIcon>
+            </MediaQuery>
+          }
+        />
 
-      <h1 className="mb-6 mx-auto">{blog.title}</h1>
-      <div className="flex mb-4 mt-4">
-        <p className="">公開日:</p>
-        <Date dateString={blog.publishedAt} />
-        <p className="ml-3">更新日:</p>
-        <Date dateString={blog.revisedAt} />
+        <h1 className="mb-6 mx-auto">{blog.title}</h1>
+        <div className="flex mb-4 mt-4">
+          <p className="">公開日:</p>
+          <Date dateString={blog.publishedAt} />
+          <p className="ml-3">更新日:</p>
+          <Date dateString={blog.revisedAt} />
+        </div>
+        <EyeCatch />
+        {/* <p></p> */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${blog.body}`,
+          }}
+        />
       </div>
-      <EyeCatch />
-      {/* <p></p> */}
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-      />
-      <div></div>
     </main>
   );
 }

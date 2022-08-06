@@ -19,7 +19,7 @@
   --cText: white;
 }
 
-body {
+body,.blogpage-wrapper{
   /* // 値を変数で指定しておくとモードによって自動的に使われる変数が変わる */
   color: var(--cText);
   background-color: var(--cBackground);
