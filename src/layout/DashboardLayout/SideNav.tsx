@@ -18,7 +18,7 @@ import {
 } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
 import { ActiveLink } from "src/lib/next";
-import { DarkModeButton } from "src/component/DarkModeButton";
+
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
   (theme, params, getRef) => {
@@ -117,7 +117,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
           <Link href={getPath("INDEX")}>
             <a className={classes.logo}>
               <DeviceAnalytics />
-              <span className={classes.linkLabel}>Admin Dashboard</span>
+              <span className={classes.linkLabel}>とっぷの練習用サイト</span>
             </a>
           </Link>
         </Group>
@@ -147,7 +147,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
           </Tooltip>
         ))}
       </Navbar.Section>
-      <DarkModeButton />
+     
       <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
         <Navbar.Section className={classes.footer}>
           <UnstyledButton className={classes.link} onClick={handlers.toggle}>

@@ -1,10 +1,10 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 /* ダークモード対応 */
 :root.light {
-  --cBackground: white; /* 白色 */
+  --cBackground: white!important; /* 白色 */
   --cText: black; /* 黒色 */
 }
 
@@ -12,6 +12,11 @@
 :root.dark {
   --cBackground: black; /* 黒色 */
   --cText: white; /* 白色 */
+}
+
+[data-theme="dark"] {
+  --cBackground: black;
+  --cText: white;
 }
 
 body {
@@ -22,10 +27,15 @@ body {
 
 /* *****これを書けば詳細度の都合でダークモード風にはなる***** */
 
-/* .mantine-10ksyyt.mantine-AppShell-main {
+ .mantine-10ksyyt.mantine-AppShell-main {
  
   color: var(--cText);
   background-color: var(--cBackground);
+}
+:root.dark .mantine-10ksyyt.mantine-AppShell-main {
+ 
+  color: var(--cText);
+  background-color: #3d3d3d;
 }
 .mantine-Navbar-root.mantine-MediaQuery-media.mantine-1oxxzjd {
   
@@ -36,9 +46,9 @@ body {
   color: var(--cText);
   background-color: var(--cBackground);
 
-} */
+}
 
-/* *****これを書けば詳細度の都合でダークモード風にはなる***** */
+/* *****これを書けば詳細度の都合でダークモード風にはなる終わり***** */
 
 
 .test {

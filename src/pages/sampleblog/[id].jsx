@@ -1,6 +1,22 @@
 import { client } from "../../lib/next/client";
 import React from "react";
 import { Date } from "../../component/date";
+import { NotificationsProvider } from "@mantine/notifications";
+import { AppMantineProvider, GlobalStyleProvider } from "src/lib/mantine";
+import {
+  ActionIcon,
+  AppShell,
+  Box,
+  CloseButton,
+  Drawer,
+  MediaQuery,
+} from "@mantine/core";
+// import { SideNav } from "src/layout/SideNav.tsx";
+
+// const SideNav = dynamic(async () => {
+//   const { SideNav } = await import("src/layout/SideNav.tsx");
+//   return SideNav;
+// });
 
 export default function BlogId({ blog }) {
   console.log(blog);
@@ -9,7 +25,7 @@ export default function BlogId({ blog }) {
       return (
         <div className="mb-5">
           <img
-            className="mx-auto"
+            className="aspect-auto"
             src={blog.eyecatch.url}
             alt="Picture of the author"
           />
@@ -21,6 +37,7 @@ export default function BlogId({ blog }) {
 
   return (
     <main className="container p-4 ">
+
       <h1 className="mb-6 mx-auto">{blog.title}</h1>
       <div className="flex mb-4 mt-4">
         <p className="">公開日:</p>

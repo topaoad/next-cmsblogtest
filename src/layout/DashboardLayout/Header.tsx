@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import { Logout, Bell, Search, Settings } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
+import { DarkModeButton } from "src/component/DarkModeButton";
 
 export const Header: FC<{ left: ReactNode }> = ({ left }) => {
   return (
@@ -29,6 +30,7 @@ export const Header: FC<{ left: ReactNode }> = ({ left }) => {
         {left}
         <SearchForm />
         <Notification />
+        <DarkModeButton />
         <UserMenu />
       </Group>
     </Box>

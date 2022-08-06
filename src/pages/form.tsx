@@ -34,7 +34,7 @@ const Index: any = ({ blog }: { blog: any }): JSX.Element => {
   console.log(blog);
   return (
     <div className="flex-auto mx-auto shadow-md">
-      <div className="text-4xl text-center border-b-2 border-white pb-6">
+      <div className="text-4xl text-center bg-purple-200 md:bg-red-200  py-2">
         記事一覧
       </div>
       <ul>
