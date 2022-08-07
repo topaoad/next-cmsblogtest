@@ -5,7 +5,7 @@ import { useForm } from "@mantine/form";
 import { NumberInput, TextInput, Button, Textarea } from "@mantine/core";
 
 const Form: CustomNextPage = () => {
-  const registerUser = async (event) => {
+  const registerUser = async (event:any) => {
     event.preventDefault();
 
     const res = await fetch("/api/send", {
