@@ -5,10 +5,10 @@ import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 
 export const SearchAria = () => {
   const searchClient = algoliasearch(
-    "LU5FB0CBR5",
-    "cd0760e4d83b3c73600bc9ab1220cc24"
+    process.env.ALGONIA_APPLICATION_ID,
+    process.env.ALGONIA_SEARCH_ONLY_API_KEY
   );
-  const indexName = "microCMSblog";
+  const indexName = process.env.ALGONIA_INITINDEX;
   return (
     <div className="search-form">
       <InstantSearch indexName={indexName} searchClient={searchClient}>
