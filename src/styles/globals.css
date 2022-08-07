@@ -4,7 +4,7 @@
 
 /* ダークモード対応 */
 :root.light {
-  --cBackground: white!important; /* 白色 */
+  --cBackground: white !important; /* 白色 */
   --cText: black; /* 黒色 */
 }
 
@@ -19,7 +19,8 @@
   --cText: white;
 }
 
-body,.blogpage-wrapper{
+body,
+.blogpage-wrapper {
   /* // 値を変数で指定しておくとモードによって自動的に使われる変数が変わる */
   color: var(--cText);
   background-color: var(--cBackground);
@@ -27,34 +28,39 @@ body,.blogpage-wrapper{
 
 /* *****これを書けば詳細度の都合でダークモード風にはなる***** */
 
- .mantine-10ksyyt.mantine-AppShell-main {
- 
+.mantine-10ksyyt.mantine-AppShell-main {
   color: var(--cText);
   background-color: var(--cBackground);
 }
 :root.dark .mantine-10ksyyt.mantine-AppShell-main {
- 
   color: var(--cText);
   background-color: #3d3d3d;
 }
 .mantine-Navbar-root.mantine-MediaQuery-media.mantine-1oxxzjd {
-  
   color: var(--cText);
   background-color: var(--cBackground);
 }
-.mantine-1xbhabf{
+.mantine-1xbhabf {
   color: var(--cText);
   background-color: var(--cBackground);
-
+  
 }
 
 /* *****これを書けば詳細度の都合でダークモード風にはなる終わり***** */
 
+/* 個別調整 */
+.mantine-Button-filled.mantine-Button-root.mantine-1b271tr {
+  background-color: #228be6;
+}
+.mantine-Button-filled.mantine-Button-root.mantine-1b271tr:hover {
+  opacity: 0.6;
+}
 
 .test {
   width: 200px;
   height: 200px;
   margin: 0 auto;
+  
   background-color: var(--cBackground);
 }
 .test__text {

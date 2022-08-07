@@ -9,9 +9,11 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@mantine/core": "4.2.10",
+    "@mantine/form": "^5.0.3",
     "@mantine/hooks": "4.2.10",
     "@mantine/next": "4.2.10",
     "@mantine/notifications": "^4.2.10",
+    "@sendgrid/mail": "^7.7.0",
     "@tabler/icons": "^1.78.1",
     "date-fns": "^2.29.1",
     "microcms-js-sdk": "^2.1.0",
@@ -20,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "3.1.4",
+    "react-hook-form": "^7.34.0",
     "tabler-icons-react": "^1.49.0"
   },
   "devDependencies": {

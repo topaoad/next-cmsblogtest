@@ -8,6 +8,7 @@ import {
   UnstyledButton,
   Tooltip,
   MediaQuery,
+ 
 } from "@mantine/core";
 import {
   Home,
@@ -15,13 +16,14 @@ import {
   ArrowLeft,
   ArrowRight,
   DeviceAnalytics,
+  Mailbox 
 } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
 import { ActiveLink } from "src/lib/next";
 
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
-  (theme, params, getRef) => {
+  (theme: { spacing: { xs: any; md: any; sm: any; }; colors: { [x: string]: any[]; gray: any[]; }; fn: { focusStyles: () => any; }; fontSizes: { sm: any; }; radius: { sm: any; }; black: any; primaryColor: string | number; }, params: { collapsed: any; }, getRef: (arg0: string) => string) => {
     const icon: string = getRef("icon");
 
     return {
@@ -104,6 +106,7 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
 const ITEMS = [
   { href: getPath("INDEX"), label: "ブログ", Icon: Home },
   { href: getPath("SETTINGS"), label: "設定", Icon: Settings },
+  { href: getPath("FORM"), label: "問合せ", Icon: Mailbox  },
 ];
 
 export const SideNav: FC<{ className?: string }> = ({ className }) => {
