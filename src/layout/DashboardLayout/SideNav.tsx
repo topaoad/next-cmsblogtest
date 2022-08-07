@@ -23,7 +23,7 @@ import { ActiveLink } from "src/lib/next";
 
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
-  (theme: { spacing: { xs: any; md: any; sm: any; }; colors: { [x: string]: any[]; gray: any[]; }; fn: { focusStyles: () => any; }; fontSizes: { sm: any; }; radius: { sm: any; }; black: any; primaryColor: string | number; }, params: { collapsed: any; }, getRef: (arg0: string) => string) => {
+  (theme, params, getRef)  => {
     const icon: string = getRef("icon");
 
     return {
