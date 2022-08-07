@@ -4,15 +4,14 @@ import type { CustomAppPage } from "next/app";
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
 
-const App: CustomAppPage = ({ Component, pageProps }) => {
-  const getLayout =
-    Component.getLayout ||
+function App({ Component, pageProps }) {
+  const getLayout = Component.getLayout ||
     ((page) => {
       return page;
     });
 
   return (
-    <ThemeProvider attribute="class"  defaultTheme="light">
+    <ThemeProvider attribute="class" defaultTheme="light">
       <GlobalStyleProvider>
         <AppMantineProvider>
           <NotificationsProvider>
@@ -22,6 +21,6 @@ const App: CustomAppPage = ({ Component, pageProps }) => {
       </GlobalStyleProvider>
     </ThemeProvider>
   );
-};
+}
 
 export default App;

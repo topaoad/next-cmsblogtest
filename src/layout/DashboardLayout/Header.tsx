@@ -15,6 +15,8 @@ import {
 import { Logout, Bell, Search, Settings } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
 import { DarkModeButton } from "src/component/DarkModeButton";
+import {SearchAria } from "src/component/SearchAria";
+
 
 export const Header: FC<{ left: ReactNode }> = ({ left }) => {
   return (
@@ -28,7 +30,8 @@ export const Header: FC<{ left: ReactNode }> = ({ left }) => {
     >
       <Group spacing="lg" noWrap>
         {left}
-        <SearchForm />
+        {/* <SearchForm /> */}
+        <SearchAria />
         <Notification />
         <DarkModeButton />
         <UserMenu />

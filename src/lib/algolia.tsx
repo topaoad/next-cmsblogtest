@@ -96,6 +96,6 @@ export const generateIndex = async (): Promise<void> => {
     process.env.ALGONIA_APPLICATION_ID,
     process.env.ALGONIA_API_KEY
   );
-  const index = cmsclient.initIndex(ALGONIA_INITINDEX);
+  const index = cmsclient.initIndex(process.env.ALGONIA_INITINDEX);
   await index.saveObjects(objects, { autoGenerateObjectIDIfNotExist: true });
 };
