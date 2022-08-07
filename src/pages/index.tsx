@@ -15,6 +15,7 @@ import {
 } from "react";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { ToggleDarkMode } from "src/component/ToggleDarkMode";
+import { generateIndex } from 'src/lib/algolia';
 
 // const Home: NextPage = (props) => {
 //   console.log(props);
@@ -101,6 +102,7 @@ const SampleTable = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: "sampleblog" });
+  await generateIndex();
 
   return {
     props: {
@@ -108,6 +110,8 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+
 
 Index.getLayout = DashboardLayout;
 
