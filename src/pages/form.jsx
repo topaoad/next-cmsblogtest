@@ -1,11 +1,11 @@
 import React from "react";
-import type { CustomNextPage } from "next";
+import  { CustomNextPage } from "next";
 import { DashboardLayout } from "src/layout";
 import { useForm } from "@mantine/form";
 import { NumberInput, TextInput, Button, Textarea } from "@mantine/core";
 
-const Form: CustomNextPage = () => {
-  const registerUser = async (event:any) => {
+const Form = () => {
+  const registerUser = async event => {
     event.preventDefault();
 
     const res = await fetch("/api/send", {
@@ -89,6 +89,8 @@ const Form: CustomNextPage = () => {
       />
       <TextInput
         mt="sm"
+        name="email"
+        type="email"
         label="メールアドレス"
         placeholder="xyz@gmail.com"
         {...form.getInputProps("email")}
@@ -97,6 +99,7 @@ const Form: CustomNextPage = () => {
       <Textarea
         placeholder="今日はありがとうございました"
         label="コメントを入力してください"
+        name="message"
         required
       />
       <Button type="submit" mt="sm">
