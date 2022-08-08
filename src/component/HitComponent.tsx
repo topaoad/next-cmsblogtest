@@ -18,7 +18,7 @@ interface HitComponentProps extends Props {
 function HitComponent({ hit }: HitComponentProps): JSX.Element {
   return (
     <div>
-      <Link href={hit.url}>
+      <Link href={hit.body}>
         <a className="hover:text-[#06bbbc]">{hit.title}</a>
       </Link>
     </div>
