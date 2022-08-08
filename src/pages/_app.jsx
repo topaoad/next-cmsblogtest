@@ -1,8 +1,8 @@
 import { NotificationsProvider } from "@mantine/notifications";
 import { AppMantineProvider, GlobalStyleProvider } from "src/lib/mantine";
-import type { CustomAppPage } from "next/app";
+import  { CustomAppPage } from "next/app";
 import "../styles/globals.css";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from 'next-themes';
 
 function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ||

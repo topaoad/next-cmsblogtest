@@ -15,7 +15,7 @@ import { DarkModeButton } from "src/component/DarkModeButton";
 import { Menu2 } from "tabler-icons-react";
 import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
-import removeMd from "remove-markdown";
+// import removeMd from "remove-markdown";
 import algoliasearch from "algoliasearch"; // 追加
 
 // export default function BlogId({ blog }) {
@@ -93,9 +93,9 @@ export const generateIndex = async (): Promise<void> => {
 
   // 追加
   const cmsclient = algoliasearch(
-    process.env.ALGONIA_APPLICATION_ID,
-    process.env.ALGONIA_API_KEY
+    process.env.ALGONIA_APPLICATION_ID as string,
+    process.env.ALGONIA_API_KEY as string
   );
-  const index = cmsclient.initIndex(process.env.ALGONIA_INITINDEX);
+  const index = cmsclient.initIndex(process.env.ALGONIA_INITINDEX as string);
   await index.saveObjects(objects, { autoGenerateObjectIDIfNotExist: true });
 };
