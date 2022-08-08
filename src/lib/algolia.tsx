@@ -87,6 +87,7 @@ export const generateIndex = async (): Promise<void> => {
         objectID: blog.id,
         title: blog.title,
         body: blog.body,
+        
       };
     }
   );

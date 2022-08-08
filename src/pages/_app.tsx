@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 
 function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ||
-    ((page) => {
+    ((page:any) => {
       return page;
     });
 
