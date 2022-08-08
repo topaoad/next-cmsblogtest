@@ -24,15 +24,15 @@ const Form = () => {
 
   //mantineバージョン
   const form = useForm({
-    initialValues: { name: "", email: "", age: 0 },
+    initialValues: { name: "", email: "", message: "" },
 
     // functions will be used to validate values at corresponding key
     validate: {
       name: (value) =>
         value.length < 2 ? "Name must have at least 2 letters" : null,
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      age: (value) =>
-        value < 18 ? "You must be at least 18 to register" : null,
+      message: (value) =>
+        value.length < 2 ? "you must input at least one message" : null,
     },
   });
 
@@ -101,6 +101,7 @@ const Form = () => {
         label="コメントを入力してください"
         name="message"
         required
+        {...form.getInputProps("message")}
       />
       <Button type="submit" mt="sm">
         送信
