@@ -1,5 +1,5 @@
 import React from "react";
-import  { CustomNextPage } from "next";
+import   CustomNextPage  from "next";
 import { DashboardLayout } from "src/layout";
 import { useForm } from "@mantine/form";
 import { NumberInput, TextInput, Button, Textarea } from "@mantine/core";
@@ -20,8 +20,10 @@ const Form = () => {
     });
 
     const result = await res.json();
+    
   };
 
+  
   //mantineバージョン
   const form = useForm({
     initialValues: { name: "", email: "", message: "" },
@@ -32,9 +34,29 @@ const Form = () => {
         value.length < 2 ? "Name must have at least 2 letters" : null,
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       message: (value) =>
-        value.length < 2 ? "you must input at least one message" : null,
+        value.length < 1 ? "you must input at least one message" : null,
     },
   });
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const res = fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      console.log('res: ', res);
+      // reset();
+      alert('お問い合わせが送信されました。');
+    } catch (error) {
+      console.error('Fetch error : ', error);
+      alert(JSON.stringify(error));
+    }
+  };
+
 
   return (
     // sendgridバージョン
@@ -69,16 +91,7 @@ const Form = () => {
     //   </form>
     // </div>
 
-    //reacthookバージョン※onsubmitだけ変更
-    // <form onSubmit={registerUser}>
-    //   <input {...register("firstName")} />
-    //   <select {...register("gender")}>
-    //     <option value="female">female</option>
-    //     <option value="male">male</option>
-    //     <option value="other">other</option>
-    //   </select>
-    //   <input type="submit" />
-    // </form>
+    
     //mantineバージョン※onsubmitだけ変更
     <form onSubmit={registerUser}>
       <TextInput
